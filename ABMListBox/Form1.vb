@@ -14,8 +14,7 @@
 
         'quita los blancos del comienzo
         TextBox1.Text.Trim()
-        'quita los blancos de atras
-        TextBox1.Text.TrimEnd()
+        
         'escribe lo del texxbox1
         ListBox1.Items.Add(TextBox1.Text.Trim)
         'limpiar

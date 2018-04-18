@@ -27,6 +27,9 @@ Partial Class Form1
         Me.Alta = New System.Windows.Forms.Button
         Me.Baja = New System.Windows.Forms.Button
         Me.modificar = New System.Windows.Forms.Button
+        Me.enumerar = New System.Windows.Forms.Button
+        Me.alfabetizar = New System.Windows.Forms.Button
+        Me.mayusculas = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'ListBox1
@@ -71,11 +74,41 @@ Partial Class Form1
         Me.modificar.Text = "Modificar"
         Me.modificar.UseVisualStyleBackColor = True
         '
+        'enumerar
+        '
+        Me.enumerar.Location = New System.Drawing.Point(197, 131)
+        Me.enumerar.Name = "enumerar"
+        Me.enumerar.Size = New System.Drawing.Size(75, 23)
+        Me.enumerar.TabIndex = 4
+        Me.enumerar.Text = "enumerar"
+        Me.enumerar.UseVisualStyleBackColor = True
+        '
+        'alfabetizar
+        '
+        Me.alfabetizar.Location = New System.Drawing.Point(197, 158)
+        Me.alfabetizar.Name = "alfabetizar"
+        Me.alfabetizar.Size = New System.Drawing.Size(75, 23)
+        Me.alfabetizar.TabIndex = 5
+        Me.alfabetizar.Text = "alfabetizar"
+        Me.alfabetizar.UseVisualStyleBackColor = True
+        '
+        'mayusculas
+        '
+        Me.mayusculas.Location = New System.Drawing.Point(197, 187)
+        Me.mayusculas.Name = "mayusculas"
+        Me.mayusculas.Size = New System.Drawing.Size(75, 23)
+        Me.mayusculas.TabIndex = 6
+        Me.mayusculas.Text = "mayusculas"
+        Me.mayusculas.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.Controls.Add(Me.mayusculas)
+        Me.Controls.Add(Me.alfabetizar)
+        Me.Controls.Add(Me.enumerar)
         Me.Controls.Add(Me.modificar)
         Me.Controls.Add(Me.Baja)
         Me.Controls.Add(Me.Alta)
@@ -93,5 +126,8 @@ Partial Class Form1
     Friend WithEvents Alta As System.Windows.Forms.Button
     Friend WithEvents Baja As System.Windows.Forms.Button
     Friend WithEvents modificar As System.Windows.Forms.Button
+    Friend WithEvents enumerar As System.Windows.Forms.Button
+    Friend WithEvents alfabetizar As System.Windows.Forms.Button
+    Friend WithEvents mayusculas As System.Windows.Forms.Button
 
 End Class

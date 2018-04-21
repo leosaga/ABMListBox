@@ -1,7 +1,10 @@
-﻿Public Class Form1
+﻿Imports System.Xml
+Imports System.IO
+Public Class Form1
     Dim mayu As Boolean = False
     Dim alfa As Boolean = False
     Dim enumerado As Boolean = False
+
 
 
     Private Sub Alta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Alta.Click
@@ -63,11 +66,11 @@
 
     Private Sub enumerar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles enumerar.Click
         Dim x As Integer
-        'si esta enumerado no lo deja enumerar de nuevo
-        If enumerado Then Exit Sub
+        'si esta enumerado no lo deja enumerar de nuevo o alfavetizar
+        If enumerado Or alfa Then Exit Sub
 
         For x = 0 To ListBox1.Items.Count - 1
-            ListBox1.Items.Item(x) = CStr(x) + " " + ListBox1.Items.Item(x).ToString
+            ListBox1.Items.Item(x) = CStr(x) + "-" + ListBox1.Items.Item(x).ToString
 
         Next
         TextBox1.Focus()
@@ -79,11 +82,11 @@
     Private Sub alfabetizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles alfabetizar.Click
 
         Dim x As Integer
-        'si esta alfabetisar no lo deja de nuevo
-        If alfa Then Exit Sub
-
+        'si esta alfabetisar no lo deja de nuevo o enumerar
+        If alfa Or enumerado Then Exit Sub
+        'chr pasa alfavetisar a partir de a
         For x = 0 To ListBox1.Items.Count - 1
-            ListBox1.Items.Item(x) = Chr(x + 65) + " " + ListBox1.Items.Item(x).ToString
+            ListBox1.Items.Item(x) = Chr(x + 65) + "-" + ListBox1.Items.Item(x).ToString
 
         Next
         TextBox1.Focus()
@@ -102,8 +105,64 @@
 
 
         Next
-        TextBox1.Focus()
+
 
         mayu = True
+        TextBox1.Focus()
+    End Sub
+
+
+    Private Sub quitar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles quitar.Click
+        Dim x, g As Integer
+        For x = 0 To ListBox1.Items.Count - 1
+            'g obtiene el numero de columna donde esta el guion
+            g = ListBox1.Items.Item(x).ToString.IndexOf("-")
+            'debuelve a partir de g mas 1 hasta el final      recorta a partir de substring
+            ListBox1.Items.Item(x) = ListBox1.Items.Item(x).substring(g + 1).ToString.ToLower
+        Next
+        TextBox1.Focus()
+
+        enumerado = False
+        alfa = False
+        mayu = True
+    End Sub
+
+    Private Sub grabarXml_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles grabarXml.Click
+
+        Dim ruta As String
+        ruta = CurDir.Substring(0, CurDir.Length - 9)
+        Dim escritor As New XmlTextWriter(ruta + "lista.xml", System.Text.Encoding.UTF8)
+        escritor.WriteStartDocument(True)
+        escritor.Formatting = Formatting.Indented
+        escritor.Indentation = (4)
+        escritor.WriteStartElement("lista")
+        Dim x As Integer
+        For x = 0 To ListBox1.Items.Count - 1
+            escritor.WriteStartElement("elemento")
+            escritor.WriteString(ListBox1.Items.Item(x).ToString)
+            escritor.WriteEndElement()
+        Next
+        escritor.WriteEndElement()
+        escritor.WriteEndDocument()
+        escritor.Close()
+
+        MsgBox("guardado correctamente")
+        TextBox1.Focus()
+    End Sub
+
+    Private Sub leer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles leer.Click
+        Dim xmld As New XmlDocument
+        Dim listanodos As XmlNodeList
+        Dim nodo As XmlNode
+        Dim ruta As String
+        ruta = CurDir().Substring(0, CurDir().Length - 9)
+        If Not File.Exists(ruta + "lista.xml") Then Exit Sub
+        xmld.Load(ruta + "lista.xml")
+        listanodos = xmld.SelectNodes("lista/elemento")
+        For Each nodo In listanodos
+            ListBox1.Items.Add(nodo.InnerText)
+
+        Next
+        TextBox1.Focus()
     End Sub
 End Class

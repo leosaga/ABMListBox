@@ -30,6 +30,9 @@ Partial Class Form1
         Me.enumerar = New System.Windows.Forms.Button
         Me.alfabetizar = New System.Windows.Forms.Button
         Me.mayusculas = New System.Windows.Forms.Button
+        Me.quitar = New System.Windows.Forms.Button
+        Me.grabarXml = New System.Windows.Forms.Button
+        Me.leer = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'ListBox1
@@ -42,7 +45,7 @@ Partial Class Form1
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 217)
+        Me.TextBox1.Location = New System.Drawing.Point(12, 231)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(179, 20)
         Me.TextBox1.TabIndex = 0
@@ -101,11 +104,41 @@ Partial Class Form1
         Me.mayusculas.Text = "mayusculas"
         Me.mayusculas.UseVisualStyleBackColor = True
         '
+        'quitar
+        '
+        Me.quitar.Location = New System.Drawing.Point(197, 214)
+        Me.quitar.Name = "quitar"
+        Me.quitar.Size = New System.Drawing.Size(75, 23)
+        Me.quitar.TabIndex = 7
+        Me.quitar.Text = "quitar "
+        Me.quitar.UseVisualStyleBackColor = True
+        '
+        'grabarXml
+        '
+        Me.grabarXml.Location = New System.Drawing.Point(12, 273)
+        Me.grabarXml.Name = "grabarXml"
+        Me.grabarXml.Size = New System.Drawing.Size(75, 23)
+        Me.grabarXml.TabIndex = 8
+        Me.grabarXml.Text = "grabarXml"
+        Me.grabarXml.UseVisualStyleBackColor = True
+        '
+        'leer
+        '
+        Me.leer.Location = New System.Drawing.Point(116, 273)
+        Me.leer.Name = "leer"
+        Me.leer.Size = New System.Drawing.Size(75, 23)
+        Me.leer.TabIndex = 9
+        Me.leer.Text = "leer"
+        Me.leer.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 261)
+        Me.ClientSize = New System.Drawing.Size(284, 308)
+        Me.Controls.Add(Me.leer)
+        Me.Controls.Add(Me.grabarXml)
+        Me.Controls.Add(Me.quitar)
         Me.Controls.Add(Me.mayusculas)
         Me.Controls.Add(Me.alfabetizar)
         Me.Controls.Add(Me.enumerar)
@@ -129,5 +162,8 @@ Partial Class Form1
     Friend WithEvents enumerar As System.Windows.Forms.Button
     Friend WithEvents alfabetizar As System.Windows.Forms.Button
     Friend WithEvents mayusculas As System.Windows.Forms.Button
+    Friend WithEvents quitar As System.Windows.Forms.Button
+    Friend WithEvents grabarXml As System.Windows.Forms.Button
+    Friend WithEvents leer As System.Windows.Forms.Button
 
 End Class

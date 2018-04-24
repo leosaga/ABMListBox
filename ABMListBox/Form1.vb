@@ -1,4 +1,7 @@
-﻿Imports System.Xml
+﻿
+'espacio de nombre
+Imports System.Xml
+
 Imports System.IO
 Public Class Form1
     Dim mayu As Boolean = False
@@ -10,13 +13,10 @@ Public Class Form1
     Private Sub Alta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Alta.Click
 
         'toma el foco en text.box1
+        'toma el foco de nuevo en textbox1
         TextBox1.Focus()
-        If TextBox1.Text.Trim = "" Then
-            'toma el foco de nuevo en textbox1
+        If TextBox1.Text.Trim = "" Then Exit Sub
 
-
-            Exit Sub
-        End If
 
         'quita los blancos del comienzo
         TextBox1.Text.Trim()
@@ -34,6 +34,8 @@ Public Class Form1
         If ListBox1.SelectedIndex = -1 Then Exit Sub
         'borra la fila del listbox1
         ListBox1.Items.RemoveAt(ListBox1.SelectedIndex)
+
+        ListBox1.ClearSelected()
 
         TextBox1.Clear()
     End Sub
@@ -59,6 +61,7 @@ Public Class Form1
 
         ListBox1.Items.Item(ListBox1.SelectedIndex) = TextBox1.Text
 
+        ListBox1.ClearSelected()
         TextBox1.Clear()
 
 
@@ -134,6 +137,7 @@ Public Class Form1
         Dim escritor As New XmlTextWriter(ruta + "lista.xml", System.Text.Encoding.UTF8)
         escritor.WriteStartDocument(True)
         escritor.Formatting = Formatting.Indented
+        'tabulacion (es como una sangria)
         escritor.Indentation = (4)
         escritor.WriteStartElement("lista")
         Dim x As Integer
